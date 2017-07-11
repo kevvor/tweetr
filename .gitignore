@@ -60,3 +60,6 @@ typings/
 
 # dotenv environment variables file
 .env
+
+# Fontawesome directory
+vendor/font-awesome-4.7.0/
