@@ -47,3 +47,26 @@
   bottom: 8px;
   left: 5px;
 }
+
+.tweet-container .buttons {
+  position: absolute;
+  bottom: 8px;
+  right: 10px;
+  color: #66c5b7;
+}
+
+.hidden {
+  display: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
