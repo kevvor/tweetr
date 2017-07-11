@@ -1,0 +1,49 @@
+.tweet-container article {
+  border-radius: 10px;
+  border-style: solid;
+  border-width: thin;
+  margin: 2em 2em 0;
+  background: #ffffff;
+  position: relative;
+}
+
+.tweet-container header {
+  padding: 10px 10px 35px;
+  background: #eeeeee;
+  border-radius: 10px 10px 0 0;
+}
+
+.tweet-container p {
+  margin: 0;
+  padding: 30px 5px;
+  border-bottom-style: solid;
+  border-bottom-width: thin;
+  border-bottom-color: #ededed;
+}
+
+.tweet-container h2 {
+  padding-left: 10px;
+  margin: 0;
+  display: inline-block;
+}
+
+.tweet-container header img {
+   float: left;
+   border-radius: 5px;
+}
+
+.tweet-container .handle {
+  float: right;
+  color: #a7a7a7;
+}
+
+.tweet-container .tweet-content {
+  margin: 0em 0 2em 0;
+  position: relative;
+}
+
+.tweet-container footer {
+  position: absolute;
+  bottom: 8px;
+  left: 5px;
+}
