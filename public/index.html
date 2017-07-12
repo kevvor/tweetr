@@ -37,6 +37,9 @@
     <!-- tweet hover js -->
     <script type="text/javascript" src="/scripts/tweet-hover.js"></script>
 
+    <!-- ajax JS -->
+    <script type="text/javascript" src="/scripts/ajax.js"></script>
+
   </head>
 
   <body>
@@ -51,7 +54,7 @@
     <main class="container">
     <section class="new-tweet">
       <h2>Compose Tweet</h2>
-      <form method="POST" action="/tweets/">
+      <form class = "tweet-form" method="POST" action="/tweets/">
         <textarea id="tweet-field" name="text" placeholder="What are you humming about?"></textarea>
         <input type="submit" name="Tweet" value="Tweet">
         <span id="count" class="counter">140</span>
@@ -59,24 +62,7 @@
     </section>
 
     <section class="tweet-container">
-<!--         <article class="tweet">
-          <header>
-            <img src="https://vanillicon.com/788e533873e80d2002fa14e1412b4188_50.png">
-            <h2>Bill Fields</h2>
-            <span class="handle">@billfields</span>
-          </header>
-          <div class="tweet-content">
-            <p>tweet tweet tweet tweet tweet tweet tweet tweet</p>
-          </div>
-          <footer>
-          10 days ago
-          </footer>
-          <span class="buttons hidden">
-            <i class="fa fa-flag"></i>
-            <i class="fa fa-retweet"></i>
-            <i class="fa fa-heart"></i>
-          </span>
-        </article> -->
+    <!-- new tweets go here -->
     </section>
 
     </main>
