@@ -39,7 +39,7 @@ function createTweetElement(data) {
 
 function renderTweets(arrayOfTweets) {
   for (let tweet of arrayOfTweets) {
-    $(".tweet-container").append(createTweetElement(tweet));
+    $(".tweet-container").prepend(createTweetElement(tweet));
   }
 }
 
