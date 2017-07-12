@@ -1,3 +1,5 @@
+$(document).ready(function() {
+
 var data = [
   {
     "user": {
@@ -10,7 +12,7 @@ var data = [
       "handle": "@SirIsaac"
     },
     "content": {
-      "text": "If I have seen further it is by standing on the shoulders of giants"
+      "text": "<script>alert('uh oh!');</script>"
     },
     "created_at": 1461116232227
   },
@@ -59,38 +61,49 @@ function createTweetElement(data) {
   let retweet = $("<i>");
   let heart = $("<i>");
 
-  fullName.text(tweetData.user.name);
-  handle.text(tweetData.user.handle);
-  avatar.attr('src', tweetData.user.avatars.small);
+  fullName.text(data.user.name);
+  handle.text(data.user.handle);
+  handle.addClass("handle");
+  avatar.attr('src', data.user.avatars.small);
   header.append(avatar, fullName, handle);
 
   tweet.addClass("tweet-content");
-  tweet.text(tweetData.content.text);
+  tweet.text(data.content.text);
   tweetContent.append(tweet);
 
   flag.addClass("fa fa-flag");
-  flag.attr("aria-hidden", "true");
-
   retweet.addClass("fa fa-retweet");
-  retweet.attr("aria-hidden", "true");
-
   heart.addClass("fa fa-heart");
-  heart.attr("aria-hidden", "true");
-
+  buttons.addClass("buttons hidden");
   buttons.append(flag, retweet, heart);
-  footer.append(buttons);
-  footer.text(tweetData.created_at);
 
-  article.append(header, tweetContent, footer);
+  footer.text(data.created_at);
 
-  return article;
+  let $tweet = article.append(header, tweetContent, footer, buttons);
+
+  return $tweet;
 }
 
 function renderTweets(arrayOfTweets) {
-  for (tweets of arrayOfTweets) {
-
+  for (let tweet of arrayOfTweets) {
+     $(".tweet-container").append(createTweetElement(tweet));
   }
 }
+
+renderTweets(data);
+
+});
+
+
+
+
+
+
+
+
+
+
+
 
 
 

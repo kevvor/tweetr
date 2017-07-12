@@ -1,12 +1,12 @@
 $(document).ready(function() {
 
-let tweetContainer = $('.tweet-container')
+let tweet = $('.tweet')
 
-tweetContainer.on("mouseenter", function (event) {
+tweet.on("mouseenter", function (event) {
   $(this).find('.buttons').removeClass("hidden");
 });
 
-tweetContainer.on("mouseleave", function (event) {
+tweet.on("mouseleave", function (event) {
   $(this).find('.buttons').addClass("hidden");
 });
 
