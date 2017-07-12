@@ -27,7 +27,7 @@ function createTweetElement(data) {
   flag.addClass("fa fa-flag");
   retweet.addClass("fa fa-retweet");
   heart.addClass("fa fa-heart");
-  buttons.addClass("buttons hidden");
+  buttons.addClass("tweet-buttons hidden");
   buttons.append(flag, retweet, heart);
 
   footer.text(data.created_at);
@@ -58,17 +58,22 @@ loadTweets();
 
 $('.tweet-form').on('submit', function (event) {
   event.preventDefault();
+
+  if ($('#tweet-field').val().length > 140) {
+    return alert('Write something less than 140 characters!')
+  }
+  else {
   $.ajax({
     method: 'POST',
     url: '/tweets',
     data: $(this).serialize()
   }).done(function (event) {
-    loadTweets();
+    loadTweets(); //can you load just the last instead of the whole database every time?
   });
+  }
 });
 
 });
-
 
 
 

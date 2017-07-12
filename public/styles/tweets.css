@@ -48,7 +48,7 @@
   left: 5px;
 }
 
-.tweet-container .buttons {
+.tweet-container .tweet-buttons {
   position: absolute;
   bottom: 8px;
   right: 10px;
@@ -58,15 +58,6 @@
 .hidden {
   display: none;
 }
-
-
-
-
-
-
-
-
-
 
 
 

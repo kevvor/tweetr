@@ -23,3 +23,19 @@ span .header {
   line-height: 1.6;
   margin-left: 10px;
 }
+
+nav .nav-buttons {
+  background: #e7fdff;
+  border-color: black;
+  border-radius: 10px;
+  border-style: solid;
+  border-width: 2px;
+  color: #00a087;
+  padding: .4em .2em .5em;
+  position: fixed;
+  right: 2em;
+}
+
+nav .nav-buttons .compose-button {
+  font-size: .6em;
+}
