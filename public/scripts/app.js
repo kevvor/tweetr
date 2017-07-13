@@ -65,9 +65,7 @@ $('.tweet-form').on('submit', function (event) {
     data: $(this).serialize()
   }).done(function (data) {
     renderTweets([data]);
-    $('#tweet-field').val(''); //can you load just the last instead of the whole database every time?
-  });
-  }
+    $('#tweet-field').val('');
 });
 
 loadTweets();
