@@ -41,6 +41,16 @@ function renderTweets(arrayOfTweets) {
   for (let tweet of arrayOfTweets) {
     $(".tweet-container").prepend(createTweetElement(tweet));
   }
+//set event handler for each tweet
+let tweet = $('.tweet')
+tweet.on("mouseenter", function (event) {
+  console.log('here');
+  $(this).find('.tweet-buttons').removeClass("hidden");
+});
+
+tweet.on("mouseleave", function (event) {
+  $(this).find('.tweet-buttons').addClass("hidden");
+});
 }
 
 function loadTweets() {
