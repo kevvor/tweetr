@@ -1,8 +1,6 @@
 $(document).ready(function() {
 
-$('.nav-buttons').on("click", function () {
-  $('.new-tweet').slideToggle().find("#tweet-field").focus();
-});
+
 
 function createTweetElement(data) {
   let article = $("<article>").addClass("tweet")
@@ -68,8 +66,6 @@ function loadTweets() {
   })
 }
 
-loadTweets();
-
 $('.tweet-form').on('submit', function (event) {
   event.preventDefault();
 
@@ -82,10 +78,18 @@ $('.tweet-form').on('submit', function (event) {
     url: '/tweets',
     data: $(this).serialize()
   }).done(function (event) {
-    loadTweets(); //can you load just the last instead of the whole database every time?
+    loadTweets();
+    $('#tweet-field').val(''); //can you load just the last instead of the whole database every time?
   });
   }
 });
+
+loadTweets();
+
+$('.nav-buttons').on("click", function () {
+  $('.new-tweet').slideToggle().find("#tweet-field").focus();
+});
+
 
 });
 
