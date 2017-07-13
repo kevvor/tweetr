@@ -1,5 +1,9 @@
 $(document).ready(function() {
 
+$('.nav-buttons').on("click", function () {
+  $('.new-tweet').slideToggle().find("#tweet-field").focus();
+});
+
 function createTweetElement(data) {
   let article = $("<article>").addClass("tweet")
   let header = $("<header>");
