@@ -1,7 +1,5 @@
 $(document).ready(function() {
 
-
-
 function createTweetElement(data) {
   let article = $("<article>").addClass("tweet")
   let header = $("<header>");
@@ -29,7 +27,7 @@ function createTweetElement(data) {
   flag.addClass("fa fa-flag");
   retweet.addClass("fa fa-retweet");
   heart.addClass("fa fa-heart");
-  buttons.addClass("tweet-buttons hidden");
+  buttons.addClass("tweet-buttons");
   buttons.append(flag, retweet, heart);
 
   footer.text(data.created_at);
@@ -39,24 +37,7 @@ function createTweetElement(data) {
   return $tweet;
 }
 
-function renderTweets(arrayOfTweets) {
-  for (let tweet of arrayOfTweets) {
-    $(".tweet-container").prepend(createTweetElement(tweet));
-  }
-//set event handler for each tweet
-let tweet = $('.tweet')
-tweet.on("mouseenter", function (event) {
-  console.log('here');
-  $(this).find('.tweet-buttons').removeClass("hidden");
-});
-
-tweet.on("mouseleave", function (event) {
-  $(this).find('.tweet-buttons').addClass("hidden");
-});
-}
-
 function loadTweets() {
-  var newTweets = '';
   $.ajax({
     method: 'GET',
     url: '/tweets',
@@ -66,9 +47,14 @@ function loadTweets() {
   })
 }
 
+function renderTweets(arrayOfTweets) {
+  for (let tweet of arrayOfTweets) {
+    $(".tweet-container").prepend(createTweetElement(tweet));
+  }
+}
+
 $('.tweet-form').on('submit', function (event) {
   event.preventDefault();
-
   if ($('#tweet-field').val().length > 140) {
     return alert('Write something less than 140 characters!')
   }
@@ -77,8 +63,8 @@ $('.tweet-form').on('submit', function (event) {
     method: 'POST',
     url: '/tweets',
     data: $(this).serialize()
-  }).done(function (event) {
-    loadTweets();
+  }).done(function (data) {
+    renderTweets([data]);
     $('#tweet-field').val(''); //can you load just the last instead of the whole database every time?
   });
   }
@@ -87,7 +73,7 @@ $('.tweet-form').on('submit', function (event) {
 loadTweets();
 
 $('.nav-buttons').on("click", function () {
-  $('.new-tweet').slideToggle().find("#tweet-field").focus();
+  $('.new-tweet').slideToggle("medium").find("#tweet-field").focus().scrollTop();
 });
 
 
