@@ -1,5 +1,7 @@
 $(document).ready(function() {
 
+const maxCharacterLength = 140;
+
 function timeSince(date) {
 
   let seconds = Math.floor((new Date() - date) / 1000);
@@ -21,7 +23,7 @@ function timeSince(date) {
   if (interval > 1) {
     return interval + " hours";
   }
-  interval = Math.floor(seconds / 60);
+  interval = Math.floor(seconds / 60); //rounding error
   if (interval > 1) {
     return interval + " minutes";
   }
@@ -71,21 +73,25 @@ function renderTweets(arrayOfTweets) {
   }
 };
 
-$('.tweet-form').on('submit', function (event) {
+function refreshTweetBox() {
+  $('#tweet-field').val('');
+  $('#count').text(maxCharacterLength);
+};
+
+$('.tweet-form').on('submit', function(event) {
   event.preventDefault();
-  if ($('#tweet-field').val().length > 140) {
-    return alert('Write something less than 140 characters long!')
+  if ($('#tweet-field').val().length > maxCharacterLength) {
+    return alert('Write something less than 140 characters long!') // new <p> prepend as a function
   }
   else {
   $.ajax({
     method: 'POST',
     url: '/tweets',
     data: $(this).serialize()
-  }).done(function (data) {
+  }).done(function(data) {
     renderTweets([data]);
-    $('#tweet-field').val('');
-    $('#count').text(140);
-  });
+    refreshTweetBox();
+  })
   }
 });
 
@@ -93,7 +99,7 @@ function loadTweets() {
   $.ajax({
     method: 'GET',
     url: '/tweets',
-    success: function (data) {
+    success: function(data) {
       renderTweets(data);
     }
   })

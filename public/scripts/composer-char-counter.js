@@ -1,15 +1,17 @@
 $(document).ready(function() {
 
+const maxCharacterLength = 140;
+
 let text = $('#tweet-field');
 
 text.on("input", function(event) {
-  $(this).siblings('#count').text(140 - this.value.length)
-  if (this.value.length > 140) {
+  $(this).siblings('#count').text(maxCharacterLength - this.value.length) //const maxchar
+  if (this.value.length > maxCharacterLength) {
     $(this).siblings('#count').addClass("count-red");
-  } else {
+  }
+  else {
     $(this).siblings('#count').removeClass("count-red");
   }
 });
 
 });
-

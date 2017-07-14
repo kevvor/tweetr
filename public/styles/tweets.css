@@ -3,7 +3,7 @@
   border-radius: 10px;
   border-style: solid;
   border-width: thin;
-  margin: 2em 2em 0;
+  margin: 2em 2em;
   position: relative;
 }
 
@@ -55,6 +55,7 @@
   color: #66c5b7;
   display: block;
 }
+
 
 .tweet-container .tweet-buttons {
   position: absolute;
