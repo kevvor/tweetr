@@ -23,7 +23,7 @@ function timeSince(date) {
   if (interval > 1) {
     return interval + " hours";
   }
-  interval = Math.floor(seconds / 60); //rounding error
+  interval = Math.floor(seconds / 60);
   if (interval > 1) {
     return interval + " minutes";
   }
@@ -81,7 +81,7 @@ function refreshTweetBox() {
 $('.tweet-form').on('submit', function(event) {
   event.preventDefault();
   if ($('#tweet-field').val().length > maxCharacterLength) {
-    return alert('Write something less than 140 characters long!') // new <p> prepend as a function
+    return alert('Write something less than 140 characters long!')
   }
   else {
   $.ajax({
