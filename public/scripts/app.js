@@ -1,5 +1,33 @@
 $(document).ready(function() {
 
+function timeSince(date) {
+
+  let seconds = Math.floor((new Date() - date) / 1000);
+
+  let interval = Math.floor(seconds / 31536000);
+
+  if (interval > 1) {
+    return interval + " years";
+  }
+  interval = Math.floor(seconds / 2592000);
+  if (interval > 1) {
+    return interval + " months";
+  }
+  interval = Math.floor(seconds / 86400);
+  if (interval > 1) {
+    return interval + " days";
+  }
+  interval = Math.floor(seconds / 3600);
+  if (interval > 1) {
+    return interval + " hours";
+  }
+  interval = Math.floor(seconds / 60);
+  if (interval > 1) {
+    return interval + " minutes";
+  }
+  return Math.floor(seconds) + " seconds";
+};
+
 function createTweetElement(data) {
   let article = $("<article>").addClass("tweet")
   let header = $("<header>");
@@ -30,33 +58,23 @@ function createTweetElement(data) {
   buttons.addClass("tweet-buttons");
   buttons.append(flag, retweet, heart);
 
-  footer.text(data.created_at);
+  footer.text(timeSince(data.created_at) + ' ago');
 
   let $tweet = article.append(header, tweetContent, footer, buttons);
 
   return $tweet;
-}
-
-function loadTweets() {
-  $.ajax({
-    method: 'GET',
-    url: '/tweets',
-    success: function (data) {
-      renderTweets(data);
-    }
-  })
-}
+};
 
 function renderTweets(arrayOfTweets) {
   for (let tweet of arrayOfTweets) {
     $(".tweet-container").prepend(createTweetElement(tweet));
   }
-}
+};
 
 $('.tweet-form').on('submit', function (event) {
   event.preventDefault();
   if ($('#tweet-field').val().length > 140) {
-    return alert('Write something less than 140 characters!')
+    return alert('Write something less than 140 characters long!')
   }
   else {
   $.ajax({
@@ -66,14 +84,22 @@ $('.tweet-form').on('submit', function (event) {
   }).done(function (data) {
     renderTweets([data]);
     $('#tweet-field').val('');
+    $('#count').text(140);
+  });
+  }
 });
+
+function loadTweets() {
+  $.ajax({
+    method: 'GET',
+    url: '/tweets',
+    success: function (data) {
+      renderTweets(data);
+    }
+  })
+};
 
 loadTweets();
-
-$('.nav-buttons').on("click", function () {
-  $('.new-tweet').slideToggle("medium").find("#tweet-field").focus().scrollTop();
-});
-
 
 });
 
