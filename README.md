@@ -19,3 +19,12 @@ This repository is the starter code for the project: Students will fork and clon
 - Chance
 - MongoDB
 
+## Screenshots
+
+!["Screenshot of autofocusing toggle button"](https://github.com/kevvor/tweetr/blob/master/docs/autofocus-toggle-button.png?raw=true)
+
+!["Screenshot of max characters alert"](https://github.com/kevvor/tweetr/blob/master/docs/max-characters.png?raw=true)
+
+!["Screenshot of stored tweets"](https://github.com/kevvor/tweetr/blob/master/docs/old-tweets.png?raw=true)
+
+!["Screenshot of wide-screen"](https://github.com/kevvor/tweetr/blob/master/docs/wide-screen.png?raw=true)
